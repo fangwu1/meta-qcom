@@ -22,6 +22,7 @@ SRCBRANCH:class-devupstream ?= "branch=qcom-6.18.y"
 
 SRC_URI = "git://github.com/qualcomm-linux/kernel.git;${SRCBRANCH};protocol=https"
 SRC_URI += "file://0001-tools-use-basename-to-identify-file-in-gen-mach-type.patch"
+SRC_URI += "file://0005-arm64-dts-qcom-Switch-USB1-USB2-DWC3-dr_mode-to-peri.patch"
 
 # Additional kernel configs.
 SRC_URI += " \

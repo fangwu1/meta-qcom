@@ -18,7 +18,15 @@ SRCREV ?= "65bb05266d477c9f7b06bc275bd622dbed08a53b"
 SRCBRANCH ?= "nobranch=1"
 SRCBRANCH:class-devupstream ?= "branch=qcom-next"
 
-SRC_URI = "git://github.com/qualcomm-linux/kernel.git;${SRCBRANCH};protocol=https"
+SRC_URI = "git://github.com/qualcomm-linux/kernel.git;${SRCBRANCH};protocol=https \
+           file://configs/bsp-additions.cfg \
+           ${@bb.utils.contains('DISTRO_FEATURES', 'selinux', 'file://selinux.cfg', '', d)} \
+           file://0001-FROMLIST-arm64-dts-qcom-talos-Drop-opp-shared-from-Q.patch \
+           file://0002-dt-bindings-arm-qcom-talos-evk-Add-QCS615-Talos-EVK-.patch \
+           file://0003-arm64-dts-qcom-talos-qcs615-ride-Fix-inconsistent-US.patch \
+           file://0004-arm64-dts-qcom-talos-evk-Add-support-for-QCS615-talo.patch \
+           file://0005-arm64-dts-qcom-Switch-USB1-USB2-DWC3-dr_mode-to-peri.patch \
+           "
 
 # Additional kernel configs.
 SRC_URI += " \
@@ -48,3 +56,4 @@ do_configure:prepend() {
     # Merge fragment for QCOM value add features
     ${S}/scripts/kconfig/merge_config.sh -m -O ${B} ${B}/.config ${KBUILD_CONFIG_EXTRA} ${@" ".join(find_cfgs(d))}
 }
+

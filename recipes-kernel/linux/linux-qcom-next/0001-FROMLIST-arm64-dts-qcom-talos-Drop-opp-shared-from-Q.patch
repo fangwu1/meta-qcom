@@ -1,0 +1,26 @@
+From 7b49fd3ee5f25644a4741461141df689f8271b3f Mon Sep 17 00:00:00 2001
+From: Wu Fang <fangwu@qti.qualcomm.com>
+Date: Wed, 21 Jan 2026 17:53:35 +0800
+Subject: [PATCH] FROMLIST: arm64: dts: qcom: talos: Drop opp-shared from QUP
+ OPP table
+
+Upstream-Status: Pending
+---
+ arch/arm64/boot/dts/qcom/talos.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/talos.dtsi b/arch/arm64/boot/dts/qcom/talos.dtsi
+index bad8dbb68d1d..257275f4f96f 100644
+--- a/arch/arm64/boot/dts/qcom/talos.dtsi
++++ b/arch/arm64/boot/dts/qcom/talos.dtsi
+@@ -539,7 +539,6 @@ cdsp_smp2p_in: slave-kernel {
+ 
+ 	qup_opp_table: opp-table-qup {
+ 		compatible = "operating-points-v2";
+-		opp-shared;
+ 
+ 		opp-75000000 {
+ 			opp-hz = /bits/ 64 <75000000>;
+-- 
+2.43.0
+
